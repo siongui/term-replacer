@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Term Replacer",
+  "description": "Replace Buddhist Terms",
+  "version": "0.1",
+  "options_page": "options.html",
+
+  "browser_action": {
+    "default_title": "Replace Buddhist Terms"
+  },
+  "background": {
+    "scripts": ["click.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab"
+  ]
+}
