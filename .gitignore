@@ -3,3 +3,4 @@ pkg/
 src/
 extension/*.js
 extension/*.js.map
+website/

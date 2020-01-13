@@ -5,11 +5,21 @@ export GOROOT=$(realpath ../go1.12.9)
 export GOPATH=$(realpath .)
 export PATH := $(GOROOT)/bin:$(GOPATH)/bin:$(PATH)
 
+WEBSITE_DIR=website
+ZIPFILE=$(WEBSITE_DIR)/extension.zip
 
 build: fmt
 	@echo "\033[92mCompiling Go to JavaScript ...\033[0m"
 	gopherjs build extension/click.go -o extension/click.js
 	gopherjs build extension/data.go extension/cc.go -o extension/cc.js
+
+pack:
+	[ -d $(WEBSITE_DIR) ] || mkdir -p $(WEBSITE_DIR)
+	cp extension/cc.js* $(WEBSITE_DIR)
+	cp extension/click.js* $(WEBSITE_DIR)
+	cp extension/manifest.json $(WEBSITE_DIR)
+	cp extension/options.html $(WEBSITE_DIR)
+	cd $(WEBSITE_DIR); zip -r extension.zip .
 
 tool: fmt
 	@echo "\033[92mParse CSV ...\033[0m"

@@ -1,0 +1,15 @@
+language: go
+go:
+  - 1.12.9
+install:
+  - make install
+script:
+  - make build
+  - make pack
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: website
+  on:
+    branch: master
